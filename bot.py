@@ -7,8 +7,6 @@ import sys
 import handlers
 from menucommands.set_bot_commands  import set_default_commands
 
-
-
 #bot ishga tushganini xabarini yuborish
 @dp.startup()
 async def on_startup_notify(bot: Bot):

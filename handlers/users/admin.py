@@ -11,30 +11,16 @@ import time
 from aiogram import F
 
 
-@dp.message(IsCheckSubChannels())
-async def kanalga_obuna(message:Message):
-    text = ""
-    inline_channel = InlineKeyboardBuilder()
-    for index,channel in enumerate(CHANNELS):
-        ChatInviteLink = await bot.create_chat_invite_link(channel)
-        inline_channel.add(InlineKeyboardButton(text=f"{index+1}-kanal",url=ChatInviteLink.invite_link))
-    inline_channel.adjust(1,repeat=True)
-    button = inline_channel.as_markup()
-    await message.answer(f"{text} kanallarga azo bo'ling",reply_markup=button)
-
-
-
-#help commands
-@dp.message(Command("help"))
-async def help_commands(message:Message):
-    await message.answer("Sizga qanday yordam kerak")
-
-
-
-#about commands
-@dp.message(Command("about"))
-async def about_commands(message:Message):
-    await message.answer("Sifat 2024")
+# @dp.message(IsCheckSubChannels())
+# async def kanalga_obuna(message:Message):
+#     text = ""
+#     inline_channel = InlineKeyboardBuilder()
+#     for index,channel in enumerate(CHANNELS):
+#         ChatInviteLink = await bot.create_chat_invite_link(channel)
+#         inline_channel.add(InlineKeyboardButton(text=f"{index+1}-kanal",url=ChatInviteLink.invite_link))
+#     inline_channel.adjust(1,repeat=True)
+#     button = inline_channel.as_markup()
+#     await message.answer(f"{text} kanallarga azo bo'ling",reply_markup=button)
 
 
 @dp.message(Command("admin"),IsBotAdminFilter(ADMINS))
