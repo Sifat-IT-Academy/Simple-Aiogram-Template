@@ -34,6 +34,15 @@ class Database:
         telegram_id NUMBER unique );
               """
         self.execute(sql, commit=True)
+    
+    def create_table_channels(self):
+        sql = """
+    CREATE TABLE IF NOT EXISTS Channels (
+    channel_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    channel_name TEXT NOT NULL,
+    channel_link TEXT NOT NULL);
+                """
+        self.execute(sql, commit=True)
 
     @staticmethod
     def format_args(sql, parameters: dict):
@@ -48,8 +57,18 @@ class Database:
         sql = """
         INSERT INTO Users(telegram_id, full_name) VALUES(?, ?);
         """
-        self.execute(sql, parameters=(telegram_id, full_name), commit=True)
+        return self.execute(sql, parameters=(telegram_id, full_name), commit=True)
 
+    def add_chanel(self, chanel_id, chanel_name, chanel_link):
+        sql = "INSERT INTO Channels (channel_id, channel_name, channel_link) VALUES(?, ?,?);"
+        return self.execute(sql, parameters=(chanel_id, chanel_name, chanel_link), commit=True)
+    
+    def select_all_channels(self):
+        sql = "SELECT * FROM Channels"
+        return self.execute(sql, fetchall=True)
+
+    def delete_channel(self, id ):
+        self.execute(f"DELETE FROM Channels WHERE channel_id = ?",parameters=(id,), commit=True)
 
     def select_all_users(self):
         sql = """

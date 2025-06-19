@@ -5,9 +5,8 @@ from aiogram.enums import ParseMode
 
 ADMINS = config.ADMINS
 TOKEN = config.BOT_TOKEN
-CHANNELS = config.CHANNELS
 
 
-bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
+bot = Bot(TOKEN)
 db = Database(path_to_db="main.db")
 dp = Dispatcher()

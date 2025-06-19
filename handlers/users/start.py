@@ -1,7 +1,13 @@
 from aiogram.types import Message
-from loader import dp,db
-from aiogram.filters import CommandStart
+from filters.admin import IsBotAdminFilter
+from loader import dp,db, ADMINS
+from aiogram.filters import CommandStart,Command
+from keyboard_buttons import admin_keyboard
 
+
+@dp.message(Command("admin"),IsBotAdminFilter(ADMINS))
+async def starts_command(message:Message):
+    await message.answer(text="Assalomu alaykum",reply_markup=admin_keyboard.admin_button)
 
 @dp.message(CommandStart())
 async def start_command(message:Message):
