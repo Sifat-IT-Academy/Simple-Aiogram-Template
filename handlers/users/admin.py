@@ -128,7 +128,7 @@ async def send_ad_to_all(message: Message, state = FSMContext):
     
     
      
-@dp.callback_query(F.data =="back_wars",DelChannelState.delete_channel)
+@dp.callback_query(F.data =="back_admin",DelChannelState.delete_channel)
 async def change_(call: CallbackQuery, state=FSMContext):
     await call.message.delete()
     await state.clear()

@@ -40,7 +40,7 @@ def inline_wars_btn(wars):
     for war in wars:
         l.append(InlineKeyboardButton(text=f"{tr}", callback_data=f"{war[0]}"))
         tr += 1
-    l.append(InlineKeyboardButton(text=f"Asosiy menuga qaytish", callback_data=f"back_wars"))
+    l.append(InlineKeyboardButton(text=f"Asosiy menuga qaytish", callback_data=f"back_admin"))
     wars_check = InlineKeyboardMarkup(inline_keyboard=[l])
     
     return wars_check

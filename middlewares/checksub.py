@@ -1,7 +1,7 @@
 import logging
 from aiogram import types
 from aiogram.dispatcher.middlewares import BaseMiddleware
-from keyboard_buttons.subscription import check_button, start_keyboard
+from keyboard_buttons.subscription import check_button
 from aiogram.types import ReplyKeyboardRemove
 
 # from data.config import CHANNELS
