@@ -12,7 +12,7 @@ from menucommands.set_bot_commands  import set_default_commands
 async def on_startup_notify(bot: Bot):
     for admin in ADMINS:
         try:
-            await bot.send_message(chat_id=int(admin),text="Bot ishga tushdi")
+            await bot.send_message(chat_id=int(admin),text="Bot ishga tushdi...")
         except Exception as err:
             logging.exception(err)
 
@@ -21,7 +21,7 @@ async def on_startup_notify(bot: Bot):
 async def off_startup_notify(bot: Bot):
     for admin in ADMINS:
         try:
-            await bot.send_message(chat_id=int(admin),text="Bot ishdan to'xtadi!")
+            await bot.send_message(chat_id=int(admin),text="Bot ishdan to'xtadi..!")
         except Exception as err:
             logging.exception(err)
 

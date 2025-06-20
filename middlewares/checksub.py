@@ -1,6 +1,6 @@
 import logging
 from aiogram import types
-from aiogram.dispatcher.middlewares import BaseMiddleware
+from aiogram import BaseMiddleware
 from keyboard_buttons.subscription import check_button
 from aiogram.types import ReplyKeyboardRemove
 
