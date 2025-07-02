@@ -13,12 +13,12 @@ python3 -m venv venv && source venv/bin/activate && pip3 install -r requirements
 
 ### 2. Create .env file and copy all variables from .env_example to it and customize your self (if needed)
 
-### 3. Run app.py
+### 3. Run bot.py
 Windows
 ```shell
-python app.py
+python bot.py
 ```
 Linux/Mac
 ```shell
-python3 app.py
+python3 bot.py
 ```
