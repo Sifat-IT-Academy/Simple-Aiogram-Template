@@ -18,3 +18,4 @@ async def start_command(message:Message):
         await message.answer(text="Assalomu alaykum, botimizga hush kelibsiz")
     except:
         await message.answer(text="Assalomu alaykum")
+

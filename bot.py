@@ -1,5 +1,7 @@
 from loader import dp,bot,db,ADMINS
 from aiogram import Bot,Dispatcher
+from middlewares.throttling import ThrottlingMiddleware #new
+from middlewares.checksub import BigBrother
 from aiogram import F
 import asyncio
 import logging
@@ -26,20 +28,12 @@ async def off_startup_notify(bot: Bot):
             logging.exception(err)
 
 
-def setup_middlewares(dispatcher: Dispatcher, bot: Bot) -> None:
-    """MIDDLEWARE"""
-    from middlewares.throttling import ThrottlingMiddleware
-
-    # Spamdan himoya qilish uchun klassik ichki o'rta dastur. So'rovlar orasidagi asosiy vaqtlar 0,5 soniya
-    dispatcher.message.middleware(ThrottlingMiddleware(slow_mode_delay=0.5))
-
-
-
 async def main() -> None:
+    dp.message.middleware(ThrottlingMiddleware(slow_mode_delay=0.5))
+    dp.message.middleware(BigBrother())
     await set_default_commands(bot)
     db.create_table_users()
     db.create_table_channels()
-    setup_middlewares(dispatcher=dp, bot=bot)
     await dp.start_polling(bot)
 
 
